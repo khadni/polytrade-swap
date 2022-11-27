@@ -2,20 +2,31 @@
 
 This project demonstrates a basic Swapper use case.
 
-The challenge is creating a Solidity smart contract and deploying it on Mumbai. The user should be able to swap either of the two tokens for a single token of their choice. For example, you can swap token A or token B for token C. Swaps should also be possible in the reverse direction. Token C can be exchanged for token A or token B. The exchange rate is 1:1 by default. Input side ERC20 tokens (A and B) do not need to swappable for each other. No method is needed to swap A <=> B.
+The challenge is creating a Solidity smart contract and deploying it on Mumbai. The user should be able to swap either of the two tokens for a single token of their choice. For example, you can swap token A or token B for token C. Swaps should also be possible in the reverse direction. Token C can be exchanged for token A (Alpha Tokens) or token B (Beta Tokens). The exchange rate is 1:1 by default. Input side ERC20 tokens (A and B) do not need to swappable for each other. No method is needed to swap A <=> B.
 A || B <==> C
 
 ## Token Parameters
 
 Please give each token a unique name and symbol. Do not call them A, B, C tokens. Tokens can all have the same number of decimals.
 
+> The following names and symbols are implemented:
+>
+> - A: Alpha Tokens (ATK),
+> - B: Beta Tokens (BTK),
+> - C: Omega Tokens (OTK).
+
 ### Token Minting
 
 Tokens A and B should be minted outside of Swapping contract. The Swapping contract should not be able to mint any new A or B tokens. Token C, however, should be minted and burned exclusively from inside the Wrapper contract.
 
+> Both Alpha and Beta Tokens are issued with a 1.000.000 supply.
+> Omega Tokens will be minted / burned as needed.
+
 ## External resources
 
 Feel free to use any code from OpenZeppelin. You may import their contracts into your own or deploy theirs without modifications. Please refrain from using code from any other source.
+
+> ERC20 and IERC20 from [OpenZeppelin](https://docs.openzeppelin.com/contracts/4.x/erc20) are used.
 
 ## Deliverables
 
