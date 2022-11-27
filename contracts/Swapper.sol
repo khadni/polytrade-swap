@@ -30,14 +30,14 @@ contract Swapper is ERC20 {
     }
 
     /*
-    * Convert an amount of input token_ to an equivalent amount of the output token
+    * Convert an amount of input _token to an equivalent amount of the output token
     *
-    * @param token_ address of token to swap
+    * @param _token address of token to swap
     * @param amount amount of token to swap/receive
     */
     function swap(address _token, uint amount) external {
         require(amount > 0, "The amount of sent tokens must be greater than zero.");
-        require(authorizedTokens[_token] == true, "You cannot swap this token to OmegaTokens");
+        require(authorizedTokens[_token] == true, "You cannot swap this type of token to OmegaTokens");
         require(IERC20(_token).balanceOf(msg.sender) >= amount * 10 ** 18, "The sender does not have enough tokens to swap this amount.");
         bool verifyTransferFrom = IERC20(_token).transferFrom(msg.sender, address(this), amount * 10 ** 18);
         require(verifyTransferFrom, "Tokens not received");
@@ -46,10 +46,18 @@ contract Swapper is ERC20 {
     }
 
     /*
-    * Convert an amount of the output token to an equivalent amount of input token_
+    * Convert an amount of the output token to an equivalent amount of input _token
     *
-    * @param token_ address of token to receive
+    * @param _token address of token to receive
     * @param amount amount of token to swap/receive
     */
-
+   function unswap(address _token, uint amount) external {
+        require(amount > 0, "The amount of sent tokens must be greater than zero.");
+        require(authorizedTokens[_token] == true, "You cannot swap OmegaTokens to this type of token");
+        require(balanceOf(msg.sender) >= amount * 10 ** 18, "The sender does not have enough Omega Tokens to swap this amount.");
+        uint unswapAmount = amount * 10 ** 18 / AlphaBetaToOmegaPrice;
+        bool verifyTransferFrom = IERC20(_token).transferFrom(msg.sender, address(this), amount * 10 ** 18);
+        require(verifyTransferFrom, "Tokens not received");
+        _burn(msg.sender, unswapAmount);
+   }
 }
