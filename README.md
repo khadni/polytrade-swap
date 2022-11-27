@@ -10,9 +10,10 @@ A || B <==> C
 Please give each token a unique name and symbol. Do not call them A, B, C tokens. Tokens can all have the same number of decimals.
 
 > The following names and symbols are implemented:
-> A: Alpha Tokens (ATK),
-> B: Beta Tokens (BTK),
-> C: Omega Tokens (OTK).
+>
+> - A: Alpha Tokens (ATK),
+> - B: Beta Tokens (BTK),
+> - C: Omega Tokens (OTK).
 
 ### Token Minting
 
