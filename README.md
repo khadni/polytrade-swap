@@ -10,6 +10,7 @@ A || B <==> C
 Please give each token a unique name and symbol. Do not call them A, B, C tokens. Tokens can all have the same number of decimals.
 
 > --- SOLUTION ---
+>
 > The following names and symbols are implemented:
 >
 > - A: Alpha Tokens (ATK),
@@ -21,6 +22,7 @@ Please give each token a unique name and symbol. Do not call them A, B, C tokens
 Tokens A and B should be minted outside of Swapping contract. The Swapping contract should not be able to mint any new A or B tokens. Token C, however, should be minted and burned exclusively from inside the Wrapper contract.
 
 > --- SOLUTION ---
+>
 > Both Alpha and Beta Tokens are issued with a 1.000.000 supply.
 > Omega Tokens will be minted / burned as needed.
 
@@ -48,12 +50,13 @@ Feel free to use any code from OpenZeppelin. You may import their contracts into
 5. Swapping.swap(TokenA.address, 100) // You should receive 50 TokenC for 100 TokenA
 
 > --- SOLUTION ---
-> Run `deploy.js` script - it deploys all contracts at once: AlphaTokens, BetaTokens and Swapper
-> To swap Alpha/BetaTokens for OmegaTokens, call the `Approve` function of the Alpha/Betatokens contract with the following arguments: Swapper contract address and the amount to approve as arguments (! our tokens use 18 decimals),
-> Call the Swapper `swap` function with the following arguments: the address of the tokens you'd like to swap (AlphaTokens or BetaTokens address) and the amount (! the swap function already takes into account the 18 decimals),
-> Congratz, you swapped Alpha or Beta tokens for Omega tokens (1:1 ratio). Your Omega tokens have been minted by the Swapper contract.
-> Modify the relative price of Alpha and Beta tokens to Omega tokens: call the Swapper `setOmegaPrice` function with the new price as argument (uint256),
-> To swap Omega tokens for Alpha/Beta tokens, call the Swapper `unswap` function with the following arguments: Alpha/Beta tokens address and the amount of Alpha/Beta tokens you'd like to grab. Your Omega tokens have been burned by the Swapper contract. Take note that depending on the new price you set in the previous step, you will end up with fewer or more Alpha/Beta tokens.
+>
+> - Run `deploy.js` script - it deploys all contracts at once: AlphaTokens, BetaTokens and Swapper
+> - To swap Alpha/BetaTokens for OmegaTokens, call the `Approve` function of the Alpha/Betatokens contract with the following arguments: Swapper contract address and the amount to approve as arguments (! our tokens use 18 decimals),
+> - Call the Swapper `swap` function with the following arguments: the address of the tokens you'd like to swap (AlphaTokens or BetaTokens address) and the amount (! the swap function already takes into account the 18 decimals),
+> - Congratz, you swapped Alpha or Beta tokens for Omega tokens (1:1 ratio). Your Omega tokens have been minted by the Swapper contract.
+> - Modify the relative price of Alpha and Beta tokens to Omega tokens: call the Swapper `setOmegaPrice` function with the new price as argument (uint256),
+> - To swap Omega tokens for Alpha/Beta tokens, call the Swapper `unswap` function with the following arguments: Alpha/Beta tokens address and the amount of Alpha/Beta tokens you'd like to grab. Your Omega tokens have been burned by the Swapper contract. Take note that depending on the new price you set in the previous step, you will end up with fewer or more Alpha/Beta tokens.
 
 ## Provided Stub
 
