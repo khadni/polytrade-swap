@@ -12,9 +12,6 @@ async function main() {
   const BetaTokens = await ethers.getContractFactory("BetaTokens");
   const betaTokens = await BetaTokens.deploy();
 
-  await contract.deployTransaction.wait();
-  await contract.deployTransaction.wait();
-
   console.log("AlphaTokens address:", alphaTokens.address);
   console.log("BetaTokens address:", betaTokens.address);
 

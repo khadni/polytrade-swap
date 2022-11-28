@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract Swapper is ERC20 {
     address payable admin;
-    uint256 AlphaBetaToOmegaPrice;
+    uint256 public AlphaBetaToOmegaPrice;
     mapping (address => bool) public authorizedTokens;
 
     constructor(address _alphaTokens, address _betaTokens) ERC20("OmegaTokens", "OTK"){
